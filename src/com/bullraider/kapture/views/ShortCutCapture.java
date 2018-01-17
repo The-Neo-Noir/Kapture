@@ -2,15 +2,25 @@ package com.bullraider.kapture.views;
 
 
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.part.*;
 import org.eclipse.jface.viewers.*;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.jface.action.*;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.text.TextViewer;
 import org.eclipse.ui.*;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.SWT;
 import javax.inject.Inject;
+import javax.swing.text.LabelView;
+
+import org.eclipse.jface.viewers.StyledString;
 
 
 /**
@@ -41,9 +51,20 @@ public class ShortCutCapture extends ViewPart {
 	@Inject IWorkbench workbench;
 	
 	private TableViewer viewer;
+	private StyledString textViewer;
 	private Action action1;
 	private Action action2;
 	private Action doubleClickAction;
+
+	private StyledString styledString;
+
+	private TextViewer textViewer2;
+
+	private LabelView labelView;
+
+	private Label label;
+
+	private Text text;
 	 
 
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
@@ -63,104 +84,34 @@ public class ShortCutCapture extends ViewPart {
 
 	@Override
 	public void createPartControl(Composite parent) {
-		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+		text = new Text(parent, SWT.SINGLE | SWT.BORDER);
+		GridData data = new GridData(SWT.FILL, SWT.FILL, true, true);
+		text.setText("Some Text");
+		text.setSize(122, 1222);
+		data.widthHint = 350;
+		text.setLayoutData(data);
 		
-		viewer.setContentProvider(ArrayContentProvider.getInstance());
-		viewer.setInput(new String[] { "One", "Two", "Three" });
-	viewer.setLabelProvider(new ViewLabelProvider());
+		
+		
+		//textViewer2 = new TextViewer(parent, SWT.SINGLE);
+		//textViewer2.setEditable(false);
+		//textViewer2.pro
+		//viewer.setContentProvider(ArrayContentProvider.getInstance());
+		//viewer.setInput(new String[] { "One", "Two", "Three" });
+		//viewer.setLabelProvider(new ViewLabelProvider());
 
 		//viewer= new 
 		// Create the help context id for the viewer's control
-		workbench.getHelpSystem().setHelp(viewer.getControl(), "Kapture.viewer");
-		getSite().setSelectionProvider(viewer);
-		makeActions();
-		hookContextMenu();
-		hookDoubleClickAction();
-		contributeToActionBars();
-	}
-
-	private void hookContextMenu() {
-		MenuManager menuMgr = new MenuManager("#PopupMenu");
-		menuMgr.setRemoveAllWhenShown(true);
-		menuMgr.addMenuListener(new IMenuListener() {
-			public void menuAboutToShow(IMenuManager manager) {
-				ShortCutCapture.this.fillContextMenu(manager);
-			}
-		});
-		Menu menu = menuMgr.createContextMenu(viewer.getControl());
-		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menuMgr, viewer);
-	}
-
-	private void contributeToActionBars() {
-		IActionBars bars = getViewSite().getActionBars();
-		fillLocalPullDown(bars.getMenuManager());
-		fillLocalToolBar(bars.getToolBarManager());
-	}
-
-	private void fillLocalPullDown(IMenuManager manager) {
-		manager.add(action1);
-		manager.add(new Separator());
-		manager.add(action2);
-	}
-
-	private void fillContextMenu(IMenuManager manager) {
-		manager.add(action1);
-		manager.add(action2);
-		// Other plug-ins can contribute there actions here
-		manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
-	}
+		//workbench.getHelpSystem().setHelp(viewer.getControl(), "Kapture.viewer");
+		//getSite().setSelectionProvider(viewer);
 	
-	private void fillLocalToolBar(IToolBarManager manager) {
-		manager.add(action1);
-		manager.add(action2);
 	}
 
-	private void makeActions() {
-		action1 = new Action() {
-			public void run() {
-				showMessage("Action 1 executed");
-			}
-		};
-		action1.setText("Action 1");
-		action1.setToolTipText("Action 1 tooltip");
-		action1.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
-			getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
-		
-		action2 = new Action() {
-			public void run() {
-				showMessage("Action 2 executed");
-			}
-		};
-		action2.setText("Action 2");
-		action2.setToolTipText("Action 2 tooltip");
-		action2.setImageDescriptor(workbench.getSharedImages().
-				getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
-		doubleClickAction = new Action() {
-			public void run() {
-				IStructuredSelection selection = viewer.getStructuredSelection();
-				Object obj = selection.getFirstElement();
-				showMessage("Double-click detected on "+obj.toString());
-			}
-		};
-	}
-
-	private void hookDoubleClickAction() {
-		viewer.addDoubleClickListener(new IDoubleClickListener() {
-			public void doubleClick(DoubleClickEvent event) {
-				doubleClickAction.run();
-			}
-		});
-	}
-	private void showMessage(String message) {
-		MessageDialog.openInformation(
-			viewer.getControl().getShell(),
-			"CaptureView",
-			message);
-	}
 
 	@Override
 	public void setFocus() {
-		viewer.getControl().setFocus();
+		//viewer.getControl().setFocus();
+		textViewer2.getControl().setFocus();
+		
 	}
 }

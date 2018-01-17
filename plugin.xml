@@ -38,7 +38,7 @@
    <extension
          point="org.eclipse.ui.startup" id="fu" name="Dont">
          
-         <startup class="kapture.views.MyStartup" />
+         <startup class="com.bullraider.kapture.views.MyStartup" />
    </extension>
 
 </plugin>
