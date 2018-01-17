@@ -1,4 +1,4 @@
-package kapture.views;
+package com.bullraider.kapture.views;
 
 
 import org.eclipse.swt.widgets.Composite;

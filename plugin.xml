@@ -13,7 +13,7 @@
             inject="true"
             icon="icons/sample.png"
             category="Kapture"
-            class="kapture.views.ShortCutCapture"
+            class="com.bullraider.kapture.views.ShortCutCapture"
             id="kapture.views.ShortCutCapture">
       </view>
    </extension>
