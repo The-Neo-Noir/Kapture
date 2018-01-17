@@ -19,6 +19,9 @@ import org.eclipse.ui.*;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ControlEvent;
+import org.eclipse.swt.events.ControlListener;
+
 import javax.inject.Inject;
 import javax.swing.text.LabelView;
 
@@ -51,38 +54,7 @@ public class ShortCutCapture extends ViewPart {
 	public static final String ID = "kapture.views.CaptureView";
 
 	@Inject IWorkbench workbench;
-	
-	private TableViewer viewer;
-	private StyledString textViewer;
-	private Action action1;
-	private Action action2;
-	private Action doubleClickAction;
-
-	private StyledString styledString;
-
-	private TextViewer textViewer2;
-
-	private LabelView labelView;
-
-	private Label label;
-
 	private Text text;
-	 
-
-	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
-		@Override
-		public String getColumnText(Object obj, int index) {
-			return getText(obj);
-		}
-		@Override
-		public Image getColumnImage(Object obj, int index) {
-			return getImage(obj);
-		}
-		@Override
-		public Image getImage(Object obj) {
-			return workbench.getSharedImages().getImage(ISharedImages.IMG_OBJ_ELEMENT);
-		}
-	}
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -92,31 +64,15 @@ public class ShortCutCapture extends ViewPart {
 		Font boldFont = new Font( text.getDisplay(), new FontData( "Arial", 45, SWT.BOLD |SWT.CENTER) );
 		text.setFont( boldFont );
 		text.setText("Bold Label");
-		data.minimumHeight=95;
-		parent.computeSize(0, 120);
+		data.heightHint=95;
 		text.setLayoutData(data);
 		
-		
-		
-		//textViewer2 = new TextViewer(parent, SWT.SINGLE);
-		//textViewer2.setEditable(false);
-		//textViewer2.pro
-		//viewer.setContentProvider(ArrayContentProvider.getInstance());
-		//viewer.setInput(new String[] { "One", "Two", "Three" });
-		//viewer.setLabelProvider(new ViewLabelProvider());
-
-		//viewer= new 
-		// Create the help context id for the viewer's control
-		//workbench.getHelpSystem().setHelp(viewer.getControl(), "Kapture.viewer");
-		//getSite().setSelectionProvider(viewer);
 	
 	}
 
-
 	@Override
 	public void setFocus() {
-		//viewer.getControl().setFocus();
-		textViewer2.getControl().setFocus();
+		// TODO Auto-generated method stub
 		
 	}
 }
