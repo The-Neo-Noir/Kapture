@@ -6,6 +6,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.part.*;
 import org.eclipse.jface.viewers.*;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
@@ -84,11 +86,14 @@ public class ShortCutCapture extends ViewPart {
 
 	@Override
 	public void createPartControl(Composite parent) {
-		text = new Text(parent, SWT.SINGLE | SWT.BORDER);
-		GridData data = new GridData(SWT.FILL, SWT.FILL, true, true);
-		text.setText("Some Text");
-		text.setSize(122, 1222);
-		data.widthHint = 350;
+		text = new Text(parent, SWT.NONE);
+		parent.setLayout( new GridLayout( 1, false ) );
+		GridData data = new GridData(SWT.CENTER, SWT.CENTER, true, true);
+		Font boldFont = new Font( text.getDisplay(), new FontData( "Arial", 45, SWT.BOLD |SWT.CENTER) );
+		text.setFont( boldFont );
+		text.setText("Bold Label");
+		data.minimumHeight=95;
+		parent.computeSize(0, 120);
 		text.setLayoutData(data);
 		
 		
