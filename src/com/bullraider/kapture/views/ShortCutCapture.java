@@ -6,9 +6,11 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 
 import org.eclipse.ui.part.*;
-
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
@@ -59,7 +61,7 @@ public class ShortCutCapture extends ViewPart {
 	/**
 	 * The ID of the view as specified by the extension.
 	 */
-	public static final String ID = "kapture.views.CaptureView";
+	public static final String ID = "com.bullraider.kapture.views.ShortCutCapture";
 
 	@Inject IWorkbench workbench;
 	private Text text;
@@ -69,14 +71,17 @@ public class ShortCutCapture extends ViewPart {
 	public void createPartControl(Composite parent) {
 		text = new Text(parent, SWT.NONE);
 		
-		GridData data = new GridData(SWT.CENTER, SWT.CENTER, true, true);
+		GridData data = new GridData(GridData.CENTER, SWT.CENTER, true, true);
+		data.heightHint=100;
+		data.minimumWidth=130;
+		
 		Font boldFont = new Font( text.getDisplay(), new FontData( "Arial", 45, SWT.BOLD |SWT.CENTER) );
 		text.setFont( boldFont );
 	
 		text.setEditable(false);
-		text.setText("");
-		data.heightHint=95;
-		data.widthHint=295;
+		
+		
+		//data.horizontalIndent=SWT.CENTER;
 		text.setLayoutData(data);
 		parent.setLayout( new GridLayout( 1, false ) );
 		
@@ -98,7 +103,7 @@ public class ShortCutCapture extends ViewPart {
 					format=WorkbenchKeyboard.generatePossibleKeyStrokes(e).get(0).toString();
 					e1.printStackTrace();
 				}
-			
+				data.widthHint=text.getBounds().width+10;
 				text.setText(format);
 				
 			}
