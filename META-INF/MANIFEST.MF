@@ -3,8 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Kapture
 Bundle-SymbolicName: Kapture;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Require-Bundle: org.eclipse.core.runtime,
-  org.eclipse.ui,
- org.eclipse.core.runtime,
- org.eclipse.jface.text
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.jface.text,
+ org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
