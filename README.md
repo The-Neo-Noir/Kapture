@@ -9,8 +9,10 @@ TODO:
       - SOMEHOW controls like Cmd+option+E+J are not working.(TODO)
 3. To have a configuration page, when I should be able to configure (TODO)
       > The play sound.
+      
       > Play animation
-      > 
+      
+      > Configure the size of the fonts, as it looks really big in windows 
 4. Remove warning messages
 
 5. Remove 
