@@ -7,6 +7,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.ui.part.*;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
@@ -65,9 +66,7 @@ public class ShortCutCapture extends ViewPart {
 		text = new Text(parent, SWT.NONE);
 
 		GridData data = new GridData(GridData.CENTER, SWT.CENTER, true, true);
-		data.heightHint = 100;
-		data.minimumWidth = 130;
-
+		
 		Font boldFont = new Font(text.getDisplay(), new FontData("Arial", 45, SWT.BOLD | SWT.CENTER));
 		text.setFont(boldFont);
 
@@ -100,8 +99,15 @@ public class ShortCutCapture extends ViewPart {
 							// TODO: Remove SYstem to logger
 							System.out.println(e1.getMessage());
 						}
-						data.widthHint = text.getBounds().width + 10;
+						//data.widthHint = text.getBounds().width + 10;
+						
 						text.setText(format);
+						Point size = text.computeSize(SWT.DEFAULT, SWT.DEFAULT);
+						//data.widthHint = size.x + 10;
+						text.setText(format);
+						System.out.println(size+" ");
+						text.setBounds(76, 28, size.x, 95);
+						
 					}
 				}
 			}

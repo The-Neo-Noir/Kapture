@@ -22,10 +22,11 @@
       <perspectiveExtension
             targetID="org.eclipse.jdt.ui.JavaPerspective">
          <view
-               ratio="0.5"
-               relative="org.eclipse.ui.views.Pu"
-               relationship="right"
-               id="kapture.views.ShortCutCapture">
+          	  id="kapture.views.ShortCutCapture"
+               ratio="0.20"
+              relative="org.eclipse.ui.views.ContentOutline"
+              relationship="top"
+              >
          </view>
       </perspectiveExtension>
    </extension>
