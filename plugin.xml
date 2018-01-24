@@ -30,10 +30,5 @@
       </perspectiveExtension>
    </extension>
   
-   <extension
-         point="org.eclipse.ui.startup" id="fu" name="Dont">
-         
-         <startup class="com.bullraider.kapture.views.MyStartup" />
-   </extension>
 
 </plugin>
