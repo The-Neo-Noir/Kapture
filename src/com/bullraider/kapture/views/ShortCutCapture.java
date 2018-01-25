@@ -1,7 +1,7 @@
 package com.bullraider.kapture.views;
 
 import org.eclipse.swt.widgets.Composite;
-
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 
 import org.eclipse.ui.part.*;
@@ -9,6 +9,8 @@ import org.eclipse.ui.part.*;
 import com.bullraider.kapture.KaptureActivator;
 import com.bullraider.kapture.preferences.PreferenceConstants;
 
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Point;
@@ -64,11 +66,10 @@ public class ShortCutCapture extends ViewPart {
 	@Inject
 	IWorkbench workbench;
 	private Text text;
-	
+
 	private boolean showAnimation;
 	private boolean playSound;
 
-	
 	@Override
 
 	public void createPartControl(Composite parent) {
@@ -138,8 +139,38 @@ public class ShortCutCapture extends ViewPart {
 						System.out.println(size+" ");
 						text.setBounds(12, 12, size.x,45);
 						data.widthHint = size.x + 10;
-						if(playSound)
-						parent.getDisplay().beep();
+						Display display = workbench.getDisplay();
+						display.asyncExec(new Runnable() {
+							
+							@Override
+							public void run() {
+								if(playSound)
+									parent.getDisplay().beep();
+								if(showAnimation) {
+									Device device = Display.getCurrent ();
+									int j=100;
+									for(int i=0;i<200;i++) {
+										int counter=i;
+										if(i==100) {
+											counter=j--;
+										}else {
+											counter=i;
+										}
+									
+									parent.setBackground( new Color (device, counter, 0, 0));
+									try {
+										Thread.sleep(10);
+									} catch (InterruptedException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+									parent.redraw();
+									
+									}
+								}
+							}
+						});
+						
 					}
 				}
 			}
