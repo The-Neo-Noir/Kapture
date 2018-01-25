@@ -65,7 +65,7 @@ public class ShortCutCapture extends ViewPart {
 	public void createPartControl(Composite parent) {
 		text = new Text(parent, SWT.NONE);
 
-		GridData data = new GridData(GridData.CENTER, SWT.CENTER, true, true);
+		GridData data = new GridData(SWT.CENTER, SWT.CENTER, true, true);
 		
 		Font boldFont = new Font(text.getDisplay(), new FontData("Arial", 45, SWT.BOLD | SWT.CENTER));
 		text.setFont(boldFont);
@@ -103,10 +103,11 @@ public class ShortCutCapture extends ViewPart {
 						
 						text.setText(format);
 						Point size = text.computeSize(SWT.DEFAULT, SWT.DEFAULT);
-						//data.widthHint = size.x + 10;
+						
 						text.setText(format);
 						System.out.println(size+" ");
-						text.setBounds(76, 28, size.x, 95);
+						text.setBounds(12, 12, size.x,45);
+						data.widthHint = size.x + 10;
 						
 					}
 				}

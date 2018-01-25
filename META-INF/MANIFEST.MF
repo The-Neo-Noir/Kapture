@@ -7,4 +7,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: com.bullraider.kapture.views
-Import-Package: javax.xml.bind
+Bundle-Activator: com.bullraider.kapture.KaptureActivator
+Bundle-ActivationPolicy: lazy

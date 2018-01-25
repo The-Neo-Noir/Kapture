@@ -23,13 +23,25 @@
             targetID="org.eclipse.jdt.ui.JavaPerspective">
          <view
           	  id="kapture.views.ShortCutCapture"
-               ratio="0.20"
+               ratio="0.18"
               relative="org.eclipse.ui.views.ContentOutline"
               relationship="top"
               >
          </view>
       </perspectiveExtension>
    </extension>
-  
-
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="com.bullraider.kapture.preferences.SamplePreferencePage"
+            id="kapture.preferences.SamplePreferencePage"
+            name="Kapture Preference">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.bullraider.kapture.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
 </plugin>
