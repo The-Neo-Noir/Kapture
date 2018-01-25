@@ -17,8 +17,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	 */
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = KaptureActivator.getDefault().getPreferenceStore();
-		store.setDefault(PreferenceConstants.P_BOOLEAN, true);
-		store.setDefault(PreferenceConstants.P_CHOICE, "choice2");
+		store.setDefault(PreferenceConstants.SHOW_ANIMATION, true);
+		store.setDefault(PreferenceConstants.PLAY_SOUND, false);
 		store.setDefault(PreferenceConstants.P_STRING,
 				"Default value");
 	}

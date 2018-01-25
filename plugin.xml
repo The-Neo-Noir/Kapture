@@ -14,7 +14,7 @@
             icon="icons/sample.png"
             category="Kapture"
             class="com.bullraider.kapture.views.ShortCutCapture"
-            id="kapture.views.ShortCutCapture">
+            id="com.bullraider.kapture.views.ShortCutCapture">
       </view>
    </extension>
    <extension
@@ -22,7 +22,7 @@
       <perspectiveExtension
             targetID="org.eclipse.jdt.ui.JavaPerspective">
          <view
-          	  id="kapture.views.ShortCutCapture"
+          	  id="com.bullraider.kapture.views.ShortCutCapture"
                ratio="0.18"
               relative="org.eclipse.ui.views.ContentOutline"
               relationship="top"
@@ -33,8 +33,8 @@
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
-            class="com.bullraider.kapture.preferences.SamplePreferencePage"
-            id="kapture.preferences.SamplePreferencePage"
+            class="com.bullraider.kapture.preferences.KapturePreferencePage"
+            id="com.bullraider.kapture.preferences.KapturePreferencePage"
             name="Kapture Preference">
       </page>
    </extension>

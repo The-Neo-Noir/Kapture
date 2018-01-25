@@ -5,6 +5,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 
 import org.eclipse.ui.part.*;
+
+import com.bullraider.kapture.KaptureActivator;
+import com.bullraider.kapture.preferences.PreferenceConstants;
+
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Point;
@@ -20,7 +24,8 @@ import org.eclipse.core.commands.NotHandledException;
 
 import org.eclipse.jface.bindings.keys.KeySequence;
 import org.eclipse.jface.bindings.keys.ParseException;
-
+import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.ui.*;
 
 import org.eclipse.ui.commands.ICommandService;
@@ -59,10 +64,35 @@ public class ShortCutCapture extends ViewPart {
 	@Inject
 	IWorkbench workbench;
 	private Text text;
+	
+	private boolean showAnimation;
+	private boolean playSound;
 
+	
 	@Override
 
 	public void createPartControl(Composite parent) {
+		
+		
+		KaptureActivator.getDefault().getPreferenceStore()
+	    .addPropertyChangeListener(new IPropertyChangeListener() {
+	        @Override
+	        public void propertyChange(PropertyChangeEvent event) {
+	            if (event.getProperty() == PreferenceConstants.PLAY_SOUND) {
+	                String value = event.getNewValue().toString();
+	                playSound=Boolean.valueOf(event.getNewValue().toString());
+	                System.out.println(value);
+	                // do something with the new value
+	            }
+	            if (event.getProperty() == PreferenceConstants.SHOW_ANIMATION) {
+	                String value = event.getNewValue().toString();
+	                showAnimation=Boolean.valueOf(event.getNewValue().toString());
+	                System.out.println(value);
+	                // do something with the new value
+	            }
+	        }
+	    });
+		
 		text = new Text(parent, SWT.NONE);
 
 		GridData data = new GridData(SWT.CENTER, SWT.CENTER, true, true);
@@ -108,7 +138,8 @@ public class ShortCutCapture extends ViewPart {
 						System.out.println(size+" ");
 						text.setBounds(12, 12, size.x,45);
 						data.widthHint = size.x + 10;
-						
+						if(playSound)
+						parent.getDisplay().beep();
 					}
 				}
 			}
