@@ -1,23 +1,12 @@
 # Kapture
-Eclipse plugin that shows the shortcuts taken. Helps learning and for demo purposes
+Eclipse plugin that shows the shortcuts taken. Helps learning and for demo purposes. 
 
-TODO:
-1. Convert the captured keycodes to Ctrl,Command,Alt,Shift...( DONE)
+If you are in code pairing environment you would wish to know the shortcuts taken by your peer it would be helpful to see what shortcut is taken on the screen, instead of gazing at the keystokes. The other useful environment is for the code presentors or tutors who use screen capture to display the live code. 
 
-2. Capture key combo and send to ShortCutCapture View. ( DONE(
-      - Capture only Ctrl,Command,Alt,Shift along with the one keys( DONE)
-      - SOMEHOW controls like Cmd+option+E+J are not working.(TODO)
-3. To have a configuration page, when I should be able to configure (TODO)
-      > The play sound. ( Done, plays once system beep as of now)
-      
-      > Play animation
-      
-      > Configure the size of the fonts, as it looks really big in windows 
-
-4. Testing pending
-    Test matrix:
+Test matrix: ( Help needed ) 
       > Test for all default (Sheme) shortcuts in winodws,linux,mac
+      
       > Test for emacs scheme for all platforms
+      
       > Test for very specific customization in keys for all platforms.
-6. Release in marketspace.
-    
+
