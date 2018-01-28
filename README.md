@@ -7,7 +7,7 @@ If you are in code pairing environment you would wish to know the shortcuts take
 # How to use it
   By Default the plugin's View is configured to show in the Java prospective,however the usual rule to display a view applies, so you can bring in the view "Capture shortcut" from Kapture plugin in any prospective.
 
-Test matrix: ( Help needed ) 
+# Test matrix: ( Help needed ) 
 
       > Test for all default (Sheme) shortcuts in winodws,linux,mac
       
